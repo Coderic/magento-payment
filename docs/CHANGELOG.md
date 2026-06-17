@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.0.7 — 2026-06-18
+
+### Parche verificado en staging (coderic.cloud)
+
+- **Fix:** `Model/Config` desencripta llaves `obscure` (`integrity`, `private`, `events`) guardadas desde Admin; corrige «signature: La firma es inválida» en producción.
+- **Admin:** llaves agrupadas por entorno (sandbox / producción) en el mismo orden que el panel Wompi (pública, privada, eventos, integridad).
+- **Tests:** unitarios para desencriptación de configuración (`Test/Unit/Model/ConfigTest.php`).
+- **i18n:** etiquetas `es_CO` actualizadas (UTF-8).
+
+```bash
+composer require wompi/magento-payment:^2.0.7
+bin/magento setup:upgrade
+bin/magento setup:di:compile
+bin/magento setup:static-content:deploy -f es_CO --area adminhtml --area frontend --theme Magento/luma
+bin/magento cache:flush
+```
+
 ## 2.0.6 — 2026-06-18
 
 ### Parche verificado en staging (coderic.cloud)

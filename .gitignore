@@ -2,3 +2,5 @@
 /.idea/
 *.swp
 .DS_Store
+/phpunit.phar
+/.phpunit.cache/

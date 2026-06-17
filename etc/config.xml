@@ -13,13 +13,13 @@
                 <sort_order>50</sort_order>
                 <test_mode>sandbox</test_mode>
                 <public_key_test></public_key_test>
-                <public_key_production></public_key_production>
                 <private_key_test></private_key_test>
-                <private_key_production></private_key_production>
-                <integrity_key_test></integrity_key_test>
-                <integrity_key_production></integrity_key_production>
                 <events_key_test></events_key_test>
+                <integrity_key_test></integrity_key_test>
+                <public_key_production></public_key_production>
+                <private_key_production></private_key_production>
                 <events_key_production></events_key_production>
+                <integrity_key_production></integrity_key_production>
                 <acquirer_merchant_id></acquirer_merchant_id>
                 <store_view_code></store_view_code>
             </wompi_payment>

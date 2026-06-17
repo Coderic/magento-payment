@@ -2,7 +2,7 @@
     "name": "wompi/magento-payment",
     "description": "Wompi Colombia Web Checkout for Magento 2 (Plan Agregador and Gateway).",
     "type": "magento2-module",
-    "version": "2.0.6",
+    "version": "2.0.7",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
@@ -28,12 +28,20 @@
         "magento/module-store": "*",
         "magento/module-checkout": "*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5 || ^11.0"
+    },
     "autoload": {
         "files": [
             "registration.php"
         ],
         "psr-4": {
             "Wompi\\Payment\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wompi\\Payment\\Test\\": "Test/"
         }
     }
 }

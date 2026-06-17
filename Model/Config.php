@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Wompi\Payment\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -11,9 +12,13 @@ class Config
 {
     private const XML_PATH = 'payment/wompi_payment/';
 
+    /** @var list<string> */
+    private const ENCRYPTED_KEYS = ['private_key', 'integrity_key', 'events_key'];
+
     public function __construct(
         private readonly ScopeConfigInterface $scopeConfig,
         private readonly StoreManagerInterface $storeManager,
+        private readonly EncryptorInterface $encryptor,
     ) {
     }
 
@@ -107,10 +112,23 @@ class Config
     {
         $suffix = $this->isSandbox($storeId) ? '_test' : '_production';
 
-        return (string) $this->scopeConfig->getValue(
+        $value = (string) $this->scopeConfig->getValue(
             self::XML_PATH . $baseKey . $suffix,
             ScopeInterface::SCOPE_STORE,
             $storeId
         );
+
+        if (in_array($baseKey, self::ENCRYPTED_KEYS, true)) {
+            return $this->decryptIfNeeded($value);
+        }
+
+        return $value;
+    }
+
+    private function decryptIfNeeded(string $value): string
+    {
+        return $value !== '' && str_starts_with($value, '0:')
+            ? $this->encryptor->decrypt($value)
+            : $value;
     }
 }
