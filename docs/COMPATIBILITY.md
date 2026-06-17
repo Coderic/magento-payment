@@ -16,7 +16,7 @@ Probado en **coderic.cloud** (Magento **2.4.9**, PHP **8.3**, tema **Luma** stoc
 ```json
 {
   "name": "wompi/magento-gateway-wompi",
-  "version": "2.0.0"
+  "version": "2.0.1"
 }
 ```
 
@@ -29,4 +29,4 @@ Probado en **coderic.cloud** (Magento **2.4.9**, PHP **8.3**, tema **Luma** stoc
 | `wompico/*` | `wompi/*` |
 | Una llave + `environment` | Llaves `*_test` / `*_production` + `test_mode` |
 
-Ejecutar `bin/magento setup:upgrade` para aplicar parches de migración de configuración.
+Ejecutar `bin/magento setup:upgrade` para aplicar parches de migración. Ver [deployment.md](deployment.md).

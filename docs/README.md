@@ -11,12 +11,14 @@ Extensión **Wompi_Payment** (`wompi/magento-gateway-wompi`): integración con [Wo
 | Documentación Wompi (Web Checkout) | [Widget & Web Checkout](https://docs.wompi.co/docs/colombia/widget-checkout-web/) |
 | Plugin oficial Magento (referencia) | [Magento Plugin](https://docs.wompi.co/docs/colombia/magento-plugin/) |
 | Código del módulo | [README raíz](../README.md) |
+| Repositorio | [github.com/Coderic/magento-gateway-wompi](https://github.com/Coderic/magento-gateway-wompi) |
 
 ## Índice
 
 | Documento | Descripción |
 |-----------|-------------|
 | [installation.md](installation.md) | Requisitos, instalación Composer y activación |
+| [deployment.md](deployment.md) | Podman, VPS, migración y checklist post-despliegue |
 | [configuration.md](configuration.md) | Llaves dual sandbox/producción, plan y panel Wompi |
 | [payment-flow.md](payment-flow.md) | Flujo checkout ? Wompi ? callback |
 | [webhook.md](webhook.md) | Eventos, firma y URL del webhook |
@@ -46,4 +48,5 @@ Los logotipos en `docs/assets/` provienen del plugin oficial **Bancolombia_Wompi
 ## Soporte
 
 - Issues: [Coderic/magento-gateway-wompi](https://github.com/Coderic/magento-gateway-wompi)
+- Maintainer: Coderic (`coderic@coderic.org`)
 - Claves y onboarding: [comercios.wompi.co](https://comercios.wompi.co)

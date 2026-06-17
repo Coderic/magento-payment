@@ -47,6 +47,8 @@ Tras place order, redirect a `wompi/checkout/start` (Web Checkout Wompi).
 
 Actualizar URL del webhook en el panel Wompi: `/wompi/payment/webhook` (antes `/wompico/payment/webhook`).
 
+Guía de despliegue: [`docs/deployment.md`](docs/deployment.md).
+
 ## Licencia
 
 OSL-3.0 / AFL-3.0

@@ -14,6 +14,8 @@ bin/magento setup:di:compile
 bin/magento cache:flush
 ```
 
+Repositorio: [github.com/Coderic/magento-gateway-wompi](https://github.com/Coderic/magento-gateway-wompi)
+
 ## Repositorio path (desarrollo Coderic)
 
 ```json
@@ -49,22 +51,25 @@ Montaje en `compose.yaml`:
 ../magento2-module-wompi-co:/var/www/html/app/code/Wompi/Payment
 ```
 
+Detalle de symlinks y permisos: [deployment.md](deployment.md).
+
 ## Verificación
 
 1. `bin/magento module:status Wompi_Payment` ? enabled
 2. Admin ? Payment Methods ? Wompi (Colombia)
-3. Registrar webhook en panel Wompi
+3. Registrar webhook en panel Wompi: `{base_url}/wompi/payment/webhook`
 
 ## Migración desde `coderic/module-wompi-co`
 
 ```bash
-bin/magento module:disable Coderic_WompiCo
+bin/magento module:disable Coderic_WompiCo 2>/dev/null || true
 bin/magento module:enable Wompi_Payment
 bin/magento setup:upgrade
 ```
 
-Los parches de datos migran configuración y método en pedidos históricos.
+Los parches de datos migran configuración y método en pedidos históricos. Actualizar URL del webhook en Wompi.
 
 ## Siguiente paso
 
-[configuration.md](configuration.md) — llaves API, entorno y webhook.
+- [configuration.md](configuration.md) — llaves API, entorno y webhook
+- [deployment.md](deployment.md) — Podman, VPS y checklist

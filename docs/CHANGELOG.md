@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1 — 2026-05-22
+
+### Documentación
+
+- Nuevo [deployment.md](deployment.md): migración, Podman, symlinks vendor, VPS y checklist
+- [installation.md](installation.md): enlaces a despliegue y repositorio GitHub
+- Despliegue verificado en coderic.cloud (Wompi_Payment activo, webhook `/wompi/payment/webhook`)
+
 ## 2.0.0 — 2026-05-22
 
 ### Breaking
