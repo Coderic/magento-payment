@@ -10,6 +10,7 @@
 "We are verifying your Wompi payment.","Estamos verificando tu pago con Wompi."
 "Your Wompi payment could not be completed.","No se pudo completar tu pago con Wompi."
 "Wompi payment approved. Transaction ID: %1","Pago Wompi aprobado. ID de transacción: %1"
+"Wompi payment not completed (%1). Transaction ID: %2","Pago Wompi no completado (%1). ID de transacción: %2"
 "Pagado","Pagado"
 "Plan Agregador (recomendado)","Plan Agregador (recomendado)"
 "Plan Gateway","Plan Gateway"
