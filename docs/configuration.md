@@ -1,4 +1,4 @@
-# Configuraciùn
+# Configuraci√≥n
 
 <p align="left">
   <img src="assets/wompi_logo.png" alt="Wompi" width="160" />
@@ -6,32 +6,32 @@
 
 ## Panel Magento
 
-**Ruta:** Stores ? Configuration ? Sales ? Payment Methods ? **Wompi (Colombia)**
+**Ruta:** Stores ‚Üí Configuration ‚Üí Sales ‚Üí Payment Methods ‚Üí **Wompi (Colombia)**
 
-| Campo | Descripciùn |
+| Campo | Descripci√≥n |
 |-------|-------------|
-| **Enabled** | Activa el mùtodo `wompi_payment` |
+| **Enabled** | Activa el m√≥todo `wompi_payment` |
 | **Plan Wompi** | `agregador` (recomendado) o `gateway` |
 | **Title** | Texto visible en checkout (por defecto: `Wompi`) |
-| **Modo de prueba** | `sandbox` o `production` ù selecciona quù juego de llaves usar |
+| **Modo de prueba** | `sandbox` o `production` √≥ selecciona qu√≥ juego de llaves usar |
 | **Public key (sandbox)** | `pub_test_*` |
 | **Public key (production)** | `pub_prod_*` |
 | **Private key (sandbox)** | `prv_test_*` (API) |
 | **Private key (production)** | `prv_prod_*` |
 | **Integrity secret (sandbox)** | Firma Web Checkout sandbox |
-| **Integrity secret (production)** | Firma Web Checkout producciùn |
-| **Events secret (sandbox)** | Validaciùn webhooks sandbox |
-| **Events secret (production)** | Validaciùn webhooks producciùn |
+| **Integrity secret (production)** | Firma Web Checkout producci√≥n |
+| **Events secret (sandbox)** | Validaci√≥n webhooks sandbox |
+| **Events secret (production)** | Validaci√≥n webhooks producci√≥n |
 | **Gateway merchant ID** | Solo Plan Gateway (placeholder v2.0) |
-| **Restrict to store view code** | Opcional. Vacùo = todos los stores |
+| **Restrict to store view code** | Opcional. Vac√≥o = todos los stores |
 
-### Llaves dual sandbox / producciùn
+### Llaves dual sandbox / producci√≥n
 
 Como en el plugin WordPress/WooCommerce y el oficial **Bancolombia_Wompi**, puede **pegar ambos juegos de llaves** y alternar con **Modo de prueba** sin reemplazar valores.
 
 ### URL base del store
 
-La `redirect-url` enviada a Wompi se genera desde la URL base del store (Stores ? Configuration ? General ? Web).
+La `redirect-url` enviada a Wompi se genera desde la URL base del store (Stores ‚Üí Configuration ‚Üí General ‚Üí Web).
 
 Ejemplo con prefijo de store view:
 
@@ -43,7 +43,7 @@ https://tu-dominio.com/tu-store/wompi/payment/callback/
 
 ### Webhook de eventos
 
-Registrar la URL en **sandbox** y **producciùn** por separado:
+Registrar la URL en **sandbox** y **producci√≥n** por separado:
 
 ```
 https://{base_url}/wompi/payment/webhook
@@ -51,7 +51,7 @@ https://{base_url}/wompi/payment/webhook
 
 Incluya el prefijo de store view si aplica (`/{store_view}/wompi/payment/webhook`).
 
-El **Events secret** activo en Magento debe coincidir con el del entorno seleccionado en Developers ? Secrets.
+El **Events secret** activo en Magento debe coincidir con el del entorno seleccionado en Developers ‚Üí Secrets.
 
 ### Claves
 
@@ -61,22 +61,22 @@ Obtenga en Wompi Developers:
 - Integrity secret (Web Checkout)
 - Events secret (webhooks)
 
-Documentaciùn: [Ambientes y llaves](https://docs.wompi.co/docs/colombia/ambientes-y-llaves/).
+Documentaci√≥n: [Ambientes y llaves](https://docs.wompi.co/docs/colombia/ambientes-y-llaves/).
 
 ## Moneda
 
-Wompi Colombia opera en **COP**. El mùdulo convierte el `grand_total` del pedido a centavos COP usando la tasa de cambio de Magento cuando el pedido no estù ya en COP.
+Wompi Colombia opera en **COP**. El m√≥dulo convierte el `grand_total` del pedido a centavos COP usando la tasa de cambio de Magento cuando el pedido no est√≥ ya en COP.
 
-## Checklist de producciùn
+## Checklist de producci√≥n
 
 - [ ] **Modo de prueba** = `production`
 - [ ] Llaves `*_production` completas en el store view correcto
 - [ ] Llaves `*_test` guardadas para pruebas futuras (opcional)
-- [ ] Webhook registrado en panel Wompi producciùn
+- [ ] Webhook registrado en panel Wompi producci√≥n
 - [ ] HTTPS en todo el sitio
 - [ ] Pedido de prueba con estado **Pagado** (`wompi_paid`) tras pago aprobado
 - [ ] `total_paid` y factura creados (sin comentario `fraud`)
 
 ## Siguiente paso
 
-[payment-flow.md](payment-flow.md) ù flujo completo del checkout.
+[payment-flow.md](payment-flow.md) √≥ flujo completo del checkout.

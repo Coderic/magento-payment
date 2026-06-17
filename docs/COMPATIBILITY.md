@@ -2,12 +2,12 @@
 
 Validado en Magento **2.4.9**, PHP **8.3**, tema **Luma** stock.
 
-| Requisito | VersiÛn mÌnima | Notas |
+| Requisito | Versi√≥n m√≠nima | Notas |
 |-----------|----------------|-------|
 | **Magento Open Source / Adobe Commerce** | **2.4.6+** (recomendado **2.4.9+**) | |
 | **PHP** | **8.1+** (recomendado **8.3+**) | |
 | **Checkout** | Luma (Knockout) | |
-| **Hyv‰ Checkout** | No incluido | IntegraciÛn aparte |
+| **Hyv√§ Checkout** | No incluido | Integraci√≥n aparte |
 | **Plan Agregador** | v2.0 | Web Checkout |
 | **Plan Gateway** | v2.0 | Mismo flujo; campos extensibles |
 
@@ -20,4 +20,4 @@ Validado en Magento **2.4.9**, PHP **8.3**, tema **Luma** stock.
 }
 ```
 
-Ver [deployment.md](deployment.md) para actualizaciÛn desde instalaciones previas.
+Ver [deployment.md](deployment.md) para actualizaci√≥n desde instalaciones previas.

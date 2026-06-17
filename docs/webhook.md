@@ -2,7 +2,7 @@
 
 ## URL
 
-Registrar en el panel Wompi (sandbox y producci髇 por separado):
+Registrar en el panel Wompi (sandbox y producci贸n por separado):
 
 ```
 https://{base_url}/wompi/payment/webhook
@@ -14,17 +14,17 @@ Con prefijo de store view:
 https://tu-dominio.com/tu-store/wompi/payment/webhook
 ```
 
-Tambi閚 funciona sin prefijo de store si el webhook llega a la URL base; el m骴ulo resuelve el **store** desde el `reference` (increment_id del pedido).
+Tambi茅n funciona sin prefijo de store si el webhook llega a la URL base; el m贸dulo resuelve el **store** desde el `reference` (increment_id del pedido).
 
 ## Eventos
 
-Wompi env韆 `POST` con cuerpo JSON (`transaction.updated`). Debe responder **HTTP 200**; Wompi reintenta hasta 3 veces si falla.
+Wompi env铆a `POST` con cuerpo JSON (`transaction.updated`). Debe responder **HTTP 200**; Wompi reintenta hasta 3 veces si falla.
 
-## Validaci髇
+## Validaci贸n
 
 1. Firma del evento con **Events secret** del entorno activo (`events_key_test` o `events_key_production`)
-2. Re-consulta de la transacci髇 v韆 API Wompi (`TransactionVerifier`)
-3. Actualizaci髇 del pedido seg鷑 status `APPROVED` / `DECLINED` / etc.
+2. Re-consulta de la transacci贸n v铆a API Wompi (`TransactionVerifier`)
+3. Actualizaci贸n del pedido seg煤n status `APPROVED` / `DECLINED` / etc.
 
 ## Observabilidad
 
@@ -34,7 +34,7 @@ Eventos exitosos se registran en `system.log` con nivel `info`:
 Wompi webhook: payment approved {"reference":"2000000003","transaction_id":"...","store_id":2}
 ```
 
-Errores de firma o verificaci髇: nivel `warning`.
+Errores de firma o verificaci贸n: nivel `warning`.
 
 ## CSRF
 

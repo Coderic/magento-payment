@@ -1,19 +1,19 @@
 # Upstream: Bancolombia/Wompi (Adobe Marketplace)
 
-Referencia del plugin histórico Wompi para Magento 2.
+Referencia del plugin histÃ³rico Wompi para Magento 2.
 
 | Recurso | Detalle |
 |---------|---------|
-| Documentación | [docs.wompi.co — Magento Plugin](https://docs.wompi.co/docs/colombia/magento-plugin/) |
-| Versión referencia | `Bancolombia_Wompi` v1.7.0 |
-| Evolución | `Wompi_Payment` v2.0 — vendor [Wompi](https://wompi.co) |
+| DocumentaciÃ³n | [docs.wompi.co â€” Magento Plugin](https://docs.wompi.co/docs/colombia/magento-plugin/) |
+| VersiÃ³n referencia | `Bancolombia_Wompi` v1.7.0 |
+| EvoluciÃ³n | `Wompi_Payment` v2.0 â€” vendor [Wompi](https://wompi.co) |
 
 ## Patrones compartidos
 
 - Redirect `checkout/start` ? Web Checkout GET
 - Callback con `?id=`
 - Webhook con firma + re-fetch API
-- Llaves sandbox/producción simultáneas
+- Llaves sandbox/producciÃ³n simultÃ¡neas
 
 ## Mejoras v2.0
 
@@ -21,5 +21,5 @@ Referencia del plugin histórico Wompi para Magento 2.
 |---------|-------------------|---------------|
 | Paquete | `bancolombia/wompi` | `wompi/magento-payment` |
 | Plan Agregador/Gateway | Sin selector | Selector Admin |
-| Status pagado | `processing` default | `wompi_paid` («Pagado») |
+| Status pagado | `processing` default | `wompi_paid` (Â«PagadoÂ») |
 | Antifraude captura | Stock | Optimizado offsite |

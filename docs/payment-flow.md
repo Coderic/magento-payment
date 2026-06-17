@@ -19,7 +19,7 @@ sequenceDiagram
     Buyer->>Wompi: Web Checkout (GET con firma)
     Wompi->>API: Procesa pago
     Wompi-->>Magento: POST webhook transaction.updated
-    Magento->>API: Verifica transacción
+    Magento->>API: Verifica transacciÃ³n
     Magento->>Magento: Estado Pagado (wompi_paid)
     Wompi->>Buyer: Redirect callback ?id=
     Buyer->>Magento: GET wompi/payment/callback
@@ -30,13 +30,13 @@ sequenceDiagram
 
 ### 1. Checkout Magento
 
-El cliente elige **Wompi** y confirma el pedido. El método `wompi_payment` inicializa el pedido en `pending_payment`.
+El cliente elige **Wompi** y confirma el pedido. El mÃ©todo `wompi_payment` inicializa el pedido en `pending_payment`.
 
 ### 2. Redirect a Wompi
 
-Knockout ejecuta `afterPlaceOrder` ? `wompi/checkout/start`.
+Knockout ejecuta `afterPlaceOrder` â†’ `wompi/checkout/start`.
 
-El controlador construye el payload (`CheckoutFlowResolver`) y envía un formulario GET a `https://checkout.wompi.co/p/`.
+El controlador construye el payload (`CheckoutFlowResolver`) y envÃ­a un formulario GET a `https://checkout.wompi.co/p/`.
 
 Campos principales:
 
@@ -50,7 +50,7 @@ Campos principales:
 
 ### 3. Webhook (fuente de verdad)
 
-Wompi envía `POST` a `wompi/payment/webhook`. Ver [webhook.md](webhook.md).
+Wompi envÃ­a `POST` a `wompi/payment/webhook`. Ver [webhook.md](webhook.md).
 
 ### 4. Callback del navegador
 
@@ -58,11 +58,11 @@ Wompi envía `POST` a `wompi/payment/webhook`. Ver [webhook.md](webhook.md).
 GET /{store}/wompi/payment/callback?id={transaction_id}
 ```
 
-Consulta API Wompi y actualiza el pedido si aún no está pagado (idempotente).
+Consulta API Wompi y actualiza el pedido si aÃºn no estÃ¡ pagado (idempotente).
 
 ## Rutas
 
-| Ruta | Controlador | Método |
+| Ruta | Controlador | MÃ©todo |
 |------|-------------|--------|
 | `wompi/checkout/start` | `Checkout\Start` | GET |
 | `wompi/payment/callback` | `Payment\Callback` | GET |
@@ -73,4 +73,4 @@ Front name: `wompi` (`etc/frontend/routes.xml`).
 
 ## Siguiente paso
 
-[order-states.md](order-states.md) — significado de estados tras el pago.
+[order-states.md](order-states.md) â€” significado de estados tras el pago.

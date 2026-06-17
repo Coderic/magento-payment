@@ -48,3 +48,11 @@ Admin: **Stores → Configuration → Sales → Payment Methods → Wompi (Colom
 ## Licencia
 
 OSL-3.0 / AFL-3.0
+
+## Desarrollo
+
+Todo archivo de texto del módulo (PHP, CSV, XML, Markdown, etc.) debe estar en **UTF-8 sin BOM**. Validar antes de commit o release:
+
+```bash
+bash dev/verify-utf8.sh
+```

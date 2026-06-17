@@ -1,6 +1,6 @@
 # Despliegue
 
-## Instalación o actualización
+## InstalaciÃ³n o actualizaciÃ³n
 
 ```bash
 composer require wompi/magento-payment:^2.0
@@ -12,7 +12,7 @@ bin/magento cache:flush
 
 ## Webhook en panel Wompi
 
-Registrar en [comercios.wompi.co](https://comercios.wompi.co) (sandbox y producción por separado):
+Registrar en [comercios.wompi.co](https://comercios.wompi.co) (sandbox y producciÃ³n por separado):
 
 ```
 https://{base_url}/wompi/payment/webhook
@@ -24,9 +24,9 @@ Si usa store views con prefijo de URL:
 https://{dominio}/{store_view}/wompi/payment/webhook
 ```
 
-## Migración desde instalaciones previas
+## MigraciÃ³n desde instalaciones previas
 
-`setup:upgrade` ejecuta parches que detectan configuración legacy en base de datos y la mapean a `payment/wompi_payment/*`, incluyendo llaves dual `_test` / `_production`.
+`setup:upgrade` ejecuta parches que detectan configuraciÃ³n legacy en base de datos y la mapean a `payment/wompi_payment/*`, incluyendo llaves dual `_test` / `_production`.
 
 Tras migrar, actualice la URL del webhook en el panel Wompi si antes usaba otro front name (p. ej. `/wompico/`).
 
@@ -46,7 +46,7 @@ Tras migrar, actualice la URL del webhook en el panel Wompi si antes usaba otro 
 }
 ```
 
-Montaje típico en contenedor Docker:
+Montaje tÃ­pico en contenedor Docker:
 
 ```yaml
 - ./vendor/wompi/magento-payment:/var/www/html/app/code/Wompi/Payment
@@ -54,8 +54,8 @@ Montaje típico en contenedor Docker:
 
 ## Checklist post-despliegue
 
-- [ ] `bin/magento module:status Wompi_Payment` ? enabled
-- [ ] Admin: llaves sandbox y producción; **Modo de prueba** correcto
+- [ ] `bin/magento module:status Wompi_Payment` â†’ enabled
+- [ ] Admin: llaves sandbox y producciÃ³n; **Modo de prueba** correcto
 - [ ] Webhook registrado en ambos entornos Wompi
 - [ ] Pago sandbox: status **Pagado** (`wompi_paid`), `total_paid` y factura OK
 - [ ] Log: `Wompi webhook: payment approved` en `system.log`

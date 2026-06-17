@@ -9,7 +9,7 @@ use Magento\Sales\Api\Data\OrderInterface;
 
 /**
  * Plan Gateway: mismo Web Checkout que Agregador en v2.0.
- * Punto de extensión para validaciones o campos adquirente futuros.
+ * Punto de extensiÃ³n para validaciones o campos adquirente futuros.
  */
 class GatewayCheckoutFlow implements CheckoutFlowInterface
 {

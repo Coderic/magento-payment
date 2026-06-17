@@ -7,7 +7,7 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 
 /**
- * Migra configuración de instalaciones con prefijo legacy en core_config_data.
+ * Migra configuraciÃ³n de instalaciones con prefijo legacy en core_config_data.
  */
 class MigrateLegacyPaymentConfig implements DataPatchInterface
 {

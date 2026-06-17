@@ -6,22 +6,22 @@
 
 ## Resumen
 
-| Dimensión | Plan Agregador | Plan Gateway |
+| DimensiÃ³n | Plan Agregador | Plan Gateway |
 |-----------|----------------|--------------|
 | **Negocio** | Wompi facilita medios de pago | Adquirencia propia con Bancolombia |
-| **Comisión Wompi** | Según tarifas Agregador | 0% comisión Wompi |
-| **Integración Magento (docs)** | Web Checkout + webhook | **La misma** según documentación Wompi |
+| **ComisiÃ³n Wompi** | SegÃºn tarifas Agregador | 0% comisiÃ³n Wompi |
+| **IntegraciÃ³n Magento (docs)** | Web Checkout + webhook | **La misma** segÃºn documentaciÃ³n Wompi |
 | **Estado v2.0** | Probado | Mismo flujo; campos Admin placeholder |
 
 ## Comportamiento v2.0
 
-- Selector Admin **Plan Wompi** ? `gateway`
+- Selector Admin **Plan Wompi** â†’ `gateway`
 - `GatewayCheckoutFlow` delega a `AgregadorCheckoutFlow` (mismo payload Web Checkout)
 - Campo **Gateway merchant ID** visible solo con Plan Gateway (`<depends>`)
 
 ## Pendiente de confirmar con Wompi
 
-- Códigos de adquirente y medios de aceptación en payload checkout
+- CÃ³digos de adquirente y medios de aceptaciÃ³n en payload checkout
 - Validaciones adicionales de llaves para cuentas Gateway
 - Campos Admin definitivos (`acquirer_merchant_id`, `enabled_payment_methods`, etc.)
 - Diferencias de onboarding en panel comercios

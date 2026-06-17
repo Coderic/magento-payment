@@ -1,31 +1,49 @@
 # Changelog
 
-## 2.0.1 — 2026-05-22
+## 2.0.2 â€” 2026-06-18
 
-### Cambio de nombre (estándar Magento)
+### CorrecciÃ³n crÃ­tica â€” codificaciÃ³n UTF-8
 
-- Paquete Composer: `wompi/magento-gateway-wompi` ? **`wompi/magento-payment`**
-- Repositorio: `magento-gateway-wompi` ? **`magento-payment`**
-- Alineado con convención Adobe/Magento (`magento/module-payment`, módulo `Wompi_Payment`)
+- Todos los archivos de texto del mÃ³dulo en **UTF-8 sin BOM** (obligatorio en Magento 2).
+- Corregidos `i18n/es_CO.csv` y archivos PHP con caracteres en Latin-1 que provocaban:
+  - error 500 al cachear traducciones (`Malformed UTF-8 characters`);
+  - ausencia de `js-translation.json` en `es_CO` tras `setup:static-content:deploy`.
+- DocumentaciÃ³n restaurada a UTF-8.
+- AÃ±adidos `.editorconfig` y `dev/verify-utf8.sh` para validar antes de release.
+
+```bash
+bash dev/verify-utf8.sh
+composer require wompi/magento-payment:^2.0.2
+bin/magento setup:static-content:deploy -f es_CO --area frontend --theme Magento/luma
+bin/magento cache:flush
+```
+
+## 2.0.1 â€” 2026-05-22
+
+### Cambio de nombre (estÃ¡ndar Magento)
+
+- Paquete Composer: `wompi/magento-gateway-wompi` â†’ **`wompi/magento-payment`**
+- Repositorio: `magento-gateway-wompi` â†’ **`magento-payment`**
+- Alineado con convenciÃ³n Adobe/Magento (`magento/module-payment`, mÃ³dulo `Wompi_Payment`)
 
 ```bash
 composer require wompi/magento-payment:^2.0
 ```
 
-## 2.0.0 — 2026-05-22
+## 2.0.0 â€” 2026-05-22
 
-Primera release pública (publicada inicialmente como `wompi/magento-gateway-wompi`).
+Primera release pÃºblica (publicada inicialmente como `wompi/magento-gateway-wompi`).
 
 ### Incluye
 
-- Módulo `Wompi_Payment` con Web Checkout (planes Agregador y Gateway)
-- Llaves sandbox y producción simultáneas + **Modo de prueba**
-- Webhook con firma y verificación API; callback de respaldo
+- MÃ³dulo `Wompi_Payment` con Web Checkout (planes Agregador y Gateway)
+- Llaves sandbox y producciÃ³n simultÃ¡neas + **Modo de prueba**
+- Webhook con firma y verificaciÃ³n API; callback de respaldo
 - Status **Pagado** (`wompi_paid`) tras pago aprobado
 - Captura offsite sin falso positivo antifraude
-- Parches de migración desde configuración legacy en BD
-- Documentación en `docs/`
+- Parches de migraciÃ³n desde configuraciÃ³n legacy en BD
+- DocumentaciÃ³n en `docs/`
 
 ### Vendor
 
-- [Wompi](https://wompi.co) — [ayuda@wompi.co](mailto:ayuda@wompi.co)
+- [Wompi](https://wompi.co) â€” [ayuda@wompi.co](mailto:ayuda@wompi.co)
