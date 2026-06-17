@@ -8,10 +8,10 @@ Registrar en el panel Wompi (sandbox y producción por separado):
 https://{base_url}/wompi/payment/webhook
 ```
 
-Con store view `es_co`:
+Con prefijo de store view:
 
 ```
-https://tu-dominio.com/es_co/wompi/payment/webhook
+https://tu-dominio.com/tu-store/wompi/payment/webhook
 ```
 
 También funciona sin prefijo de store si el webhook llega a la URL base; el módulo resuelve el **store** desde el `reference` (increment_id del pedido).

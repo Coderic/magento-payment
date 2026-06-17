@@ -2,15 +2,21 @@
     "name": "wompi/magento-gateway-wompi",
     "description": "Wompi Colombia Web Checkout for Magento 2 (Plan Agregador and Gateway).",
     "type": "magento2-module",
-    "version": "2.0.1",
+    "version": "2.0.0",
     "license": ["OSL-3.0", "AFL-3.0"],
+    "homepage": "https://wompi.co",
     "authors": [
         {
-            "name": "Coderic",
-            "email": "coderic@coderic.org",
-            "role": "Maintainer"
+            "name": "Wompi",
+            "email": "ayuda@wompi.co",
+            "homepage": "https://wompi.co",
+            "role": "Vendor"
         }
     ],
+    "support": {
+        "email": "ayuda@wompi.co",
+        "docs": "https://docs.wompi.co/docs/colombia/magento-plugin/"
+    },
     "require": {
         "php": "^8.1 || ^8.2 || ^8.3 || ^8.4",
         "magento/framework": "*",

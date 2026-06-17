@@ -1,43 +1,19 @@
 # Changelog
 
-## 2.0.1 — 2026-05-22
-
-### Documentación
-
-- Nuevo [deployment.md](deployment.md): migración, Podman, symlinks vendor, VPS y checklist
-- [installation.md](installation.md): enlaces a despliegue y repositorio GitHub
-- Despliegue verificado en coderic.cloud (Wompi_Payment activo, webhook `/wompi/payment/webhook`)
-
 ## 2.0.0 — 2026-05-22
 
-### Breaking
+Primera release pública `wompi/magento-gateway-wompi`.
 
-- Rename módulo `Coderic_WompiCo` ? `Wompi_Payment`
-- Paquete Composer `coderic/module-wompi-co` ? `wompi/magento-gateway-wompi`
-- Método de pago `coderic_wompi_co` ? `wompi_payment`
-- Rutas frontend `wompico/*` ? `wompi/*`
+### Incluye
 
-### Añadido
-
-- Selector **Plan Wompi** (Agregador / Gateway) en Admin
-- Llaves **sandbox y producción simultáneas** + toggle **Modo de prueba**
-- Status personalizado **`wompi_paid`** (etiqueta «Pagado») en state `processing`
-- `CheckoutFlowInterface` con estrategias Agregador y Gateway
-- Resolución de `storeId` desde `reference` en webhook
-- Log `info` en webhooks exitosos
-- Parches de migración desde `coderic_wompi_co`
+- Módulo `Wompi_Payment` con Web Checkout (planes Agregador y Gateway)
+- Llaves sandbox y producción simultáneas + **Modo de prueba**
+- Webhook con firma y verificación API; callback de respaldo
+- Status **Pagado** (`wompi_paid`) tras pago aprobado
+- Captura offsite sin falso positivo antifraude
+- Parches de migración desde configuración legacy en BD
 - Documentación en `docs/`
 
-### Corregido
+### Vendor
 
-- Falso positivo antifraude en captura (`registerCaptureNotification` con `skipFraudDetection`)
-- `StoreContext` cuando `store_view_code` está vacío
-
-### Maintainer
-
-- Coderic (`coderic@coderic.org`)
-
-## 1.x (coderic/module-wompi-co)
-
-- Web Checkout Plan Agregador para `es_co`
-- Integración inicial Coderic cloud
+- [Wompi](https://wompi.co) — [ayuda@wompi.co](mailto:ayuda@wompi.co)

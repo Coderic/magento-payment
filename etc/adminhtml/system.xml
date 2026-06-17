@@ -93,7 +93,7 @@
                 </field>
                 <field id="store_view_code" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Restrict to store view code</label>
-                    <comment>Optional. Leave empty to show Wompi on every store view. Example: es_co</comment>
+                    <comment>Optional. Leave empty to show Wompi on every store view.</comment>
                 </field>
             </group>
         </section>

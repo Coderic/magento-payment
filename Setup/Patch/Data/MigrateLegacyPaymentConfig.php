@@ -6,9 +6,12 @@ namespace Wompi\Payment\Setup\Patch\Data;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 
-class MigrateCodericWompiConfig implements DataPatchInterface
+/**
+ * Migra configuración de instalaciones con prefijo legacy en core_config_data.
+ */
+class MigrateLegacyPaymentConfig implements DataPatchInterface
 {
-    private const OLD_PREFIX = 'payment/coderic_wompi_co/';
+    private const LEGACY_CONFIG_PREFIX = 'payment/coderic_wompi_co/';
     private const NEW_PREFIX = 'payment/wompi_payment/';
 
     public function __construct(
@@ -23,7 +26,7 @@ class MigrateCodericWompiConfig implements DataPatchInterface
 
         $select = $connection->select()
             ->from($table, ['config_id', 'scope', 'scope_id', 'path', 'value'])
-            ->where('path LIKE ?', self::OLD_PREFIX . '%');
+            ->where('path LIKE ?', self::LEGACY_CONFIG_PREFIX . '%');
 
         $rows = $connection->fetchAll($select);
         if ($rows === []) {
@@ -32,7 +35,7 @@ class MigrateCodericWompiConfig implements DataPatchInterface
 
         $environmentByScope = [];
         foreach ($rows as $row) {
-            $suffix = substr((string) $row['path'], strlen(self::OLD_PREFIX));
+            $suffix = substr((string) $row['path'], strlen(self::LEGACY_CONFIG_PREFIX));
             if ($suffix === 'environment') {
                 $key = $row['scope'] . ':' . $row['scope_id'];
                 $environmentByScope[$key] = (string) $row['value'];
@@ -40,7 +43,7 @@ class MigrateCodericWompiConfig implements DataPatchInterface
         }
 
         foreach ($rows as $row) {
-            $suffix = substr((string) $row['path'], strlen(self::OLD_PREFIX));
+            $suffix = substr((string) $row['path'], strlen(self::LEGACY_CONFIG_PREFIX));
             $scopeKey = $row['scope'] . ':' . $row['scope_id'];
             $env = $environmentByScope[$scopeKey] ?? 'sandbox';
             $keySuffix = $env === 'production' ? '_production' : '_test';
@@ -83,6 +86,8 @@ class MigrateCodericWompiConfig implements DataPatchInterface
 
     public function getAliases(): array
     {
-        return [];
+        return [
+            'Wompi\\Payment\\Setup\\Patch\\Data\\MigrateCodericWompiConfig',
+        ];
     }
 }

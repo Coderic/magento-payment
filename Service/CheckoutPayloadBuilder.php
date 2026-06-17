@@ -176,7 +176,7 @@ class CheckoutPayloadBuilder
         $rate = $this->currencyFactory->create()->load($orderCurrency)->getAnyRate(self::WOMPI_CURRENCY);
         if ($rate === false || $rate <= 0) {
             throw new LocalizedException(
-                __('Cannot convert order total to COP for Wompi. Enable COP for store view es_co.')
+                __('Cannot convert order total to COP for Wompi. Enable COP for this store view.')
             );
         }
 

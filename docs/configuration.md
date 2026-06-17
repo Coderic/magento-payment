@@ -1,4 +1,4 @@
-# ConfiguraciÛn
+# Configuraciùn
 
 <p align="left">
   <img src="assets/wompi_logo.png" alt="Wompi" width="160" />
@@ -8,24 +8,24 @@
 
 **Ruta:** Stores ? Configuration ? Sales ? Payment Methods ? **Wompi (Colombia)**
 
-| Campo | DescripciÛn |
+| Campo | Descripciùn |
 |-------|-------------|
-| **Enabled** | Activa el mÈtodo `wompi_payment` |
+| **Enabled** | Activa el mùtodo `wompi_payment` |
 | **Plan Wompi** | `agregador` (recomendado) o `gateway` |
 | **Title** | Texto visible en checkout (por defecto: `Wompi`) |
-| **Modo de prueba** | `sandbox` o `production` ó selecciona quÈ juego de llaves usar |
+| **Modo de prueba** | `sandbox` o `production` ù selecciona quù juego de llaves usar |
 | **Public key (sandbox)** | `pub_test_*` |
 | **Public key (production)** | `pub_prod_*` |
 | **Private key (sandbox)** | `prv_test_*` (API) |
 | **Private key (production)** | `prv_prod_*` |
 | **Integrity secret (sandbox)** | Firma Web Checkout sandbox |
-| **Integrity secret (production)** | Firma Web Checkout producciÛn |
-| **Events secret (sandbox)** | ValidaciÛn webhooks sandbox |
-| **Events secret (production)** | ValidaciÛn webhooks producciÛn |
+| **Integrity secret (production)** | Firma Web Checkout producciùn |
+| **Events secret (sandbox)** | Validaciùn webhooks sandbox |
+| **Events secret (production)** | Validaciùn webhooks producciùn |
 | **Gateway merchant ID** | Solo Plan Gateway (placeholder v2.0) |
-| **Restrict to store view code** | Opcional. VacÌo = todos los stores. Ejemplo: `es_co` |
+| **Restrict to store view code** | Opcional. Vacùo = todos los stores |
 
-### Llaves dual sandbox / producciÛn
+### Llaves dual sandbox / producciùn
 
 Como en el plugin WordPress/WooCommerce y el oficial **Bancolombia_Wompi**, puede **pegar ambos juegos de llaves** y alternar con **Modo de prueba** sin reemplazar valores.
 
@@ -33,23 +33,23 @@ Como en el plugin WordPress/WooCommerce y el oficial **Bancolombia_Wompi**, pued
 
 La `redirect-url` enviada a Wompi se genera desde la URL base del store (Stores ? Configuration ? General ? Web).
 
-Ejemplo en `es_co`:
+Ejemplo con prefijo de store view:
 
 ```
-https://tu-dominio.com/es_co/wompi/payment/callback/
+https://tu-dominio.com/tu-store/wompi/payment/callback/
 ```
 
 ## Panel Wompi (comercios.wompi.co)
 
 ### Webhook de eventos
 
-Registrar la URL en **sandbox** y **producciÛn** por separado:
+Registrar la URL en **sandbox** y **producciùn** por separado:
 
 ```
 https://{base_url}/wompi/payment/webhook
 ```
 
-Incluya el prefijo de store view si aplica (`/es_co/wompi/payment/webhook`).
+Incluya el prefijo de store view si aplica (`/{store_view}/wompi/payment/webhook`).
 
 El **Events secret** activo en Magento debe coincidir con el del entorno seleccionado en Developers ? Secrets.
 
@@ -61,22 +61,22 @@ Obtenga en Wompi Developers:
 - Integrity secret (Web Checkout)
 - Events secret (webhooks)
 
-DocumentaciÛn: [Ambientes y llaves](https://docs.wompi.co/docs/colombia/ambientes-y-llaves/).
+Documentaciùn: [Ambientes y llaves](https://docs.wompi.co/docs/colombia/ambientes-y-llaves/).
 
 ## Moneda
 
-Wompi Colombia opera en **COP**. El mÛdulo convierte el `grand_total` del pedido a centavos COP usando la tasa de cambio de Magento cuando el pedido no est· ya en COP.
+Wompi Colombia opera en **COP**. El mùdulo convierte el `grand_total` del pedido a centavos COP usando la tasa de cambio de Magento cuando el pedido no estù ya en COP.
 
-## Checklist de producciÛn
+## Checklist de producciùn
 
 - [ ] **Modo de prueba** = `production`
 - [ ] Llaves `*_production` completas en el store view correcto
 - [ ] Llaves `*_test` guardadas para pruebas futuras (opcional)
-- [ ] Webhook registrado en panel Wompi producciÛn
+- [ ] Webhook registrado en panel Wompi producciùn
 - [ ] HTTPS en todo el sitio
 - [ ] Pedido de prueba con estado **Pagado** (`wompi_paid`) tras pago aprobado
 - [ ] `total_paid` y factura creados (sin comentario `fraud`)
 
 ## Siguiente paso
 
-[payment-flow.md](payment-flow.md) ó flujo completo del checkout.
+[payment-flow.md](payment-flow.md) ù flujo completo del checkout.
