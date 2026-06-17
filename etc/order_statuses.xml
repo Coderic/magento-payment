@@ -9,7 +9,7 @@
     <states>
         <state id="processing">
             <statuses>
-                <status code="wompi_paid"/>
+                <status code="wompi_paid" default="0" visible_on_front="1"/>
             </statuses>
         </state>
     </states>

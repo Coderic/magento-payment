@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.3 — 2026-06-18
+
+### Corrección — status «Pagado» visible en Admin y storefront
+
+- Parche `InstallWompiOrderStatus`: registra `wompi_paid` en `sales_order_status` y `sales_order_status_state`.
+- `order_statuses.xml` no persiste en BD en Magento 2.4; sin el parche la columna Status quedaba vacía pese a `state=processing`.
+- Alineado con [Adobe Commerce — Order status](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/order-management/orders/order-status): tras pago aprobado, **state** `processing`, **status** `wompi_paid` (etiqueta «Pagado»).
+
+```bash
+composer require wompi/magento-payment:^2.0.3
+bin/magento setup:upgrade
+bin/magento cache:flush
+```
+
 ## 2.0.2 — 2026-06-18
 
 ### Corrección crítica — codificación UTF-8

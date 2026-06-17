@@ -1,40 +1,34 @@
 # Estados de pedido
 
-## ¿Por qué "Procesando" o "Pagado"?
+Referencia: [Order status | Adobe Commerce](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/order-management/orders/order-status)
 
-En Magento **no existe un estado nativo llamado "Pagado"** en el ciclo estándar. Tras confirmar el pago, el pedido pasa a **state** `processing`.
+## Flujo Wompi (offsite)
 
-| Estado Magento (`state`) | Status en este módulo | Significado |
-|--------------------------|----------------------|-------------|
-| `pending_payment` | `pending_payment` | Esperando pago en Wompi |
-| `processing` | **`wompi_paid`** (etiqueta: **Pagado**) | Pago confirmado; listo para fulfillment |
-| `complete` | (default) | Pedido cumplido / facturado y entregado |
-| `canceled` | (default) | Pago rechazado o no completado |
+| Fase | State Magento | Status | Etiqueta visible |
+|------|---------------|--------|------------------|
+| Pedido creado, cliente redirigido a Wompi | `pending_payment` | `pending_payment` | Pendiente de pago |
+| Pago aprobado (webhook o callback) | `processing` | `wompi_paid` | **Pagado** |
+| Servicio entregado / pedido cerrado | `complete` | `complete` | Completado |
+| Pago rechazado o abandonado | `canceled` | `canceled` | Cancelado |
 
-**"Procesando" en Magento estándar** significa *pago recibido, pendiente de preparar/enviar*. Este módulo usa el status personalizado **`wompi_paid`** con etiqueta **Pagado** para mayor claridad en `es_CO`.
+En Magento, **state** define el flujo programático; **status** es la etiqueta para Admin y clientes. Tras confirmar el pago, Adobe asigna el state **processing** (pago recibido, pendiente de preparar/enviar). Este módulo usa el status personalizado **`wompi_paid`** con etiqueta **Pagado** en lugar del genérico «Procesando».
 
 ## Estados Wompi (API)
 
 | Status Wompi | Acción del módulo |
 |--------------|-------------------|
-| `APPROVED` | Marca pedido pagado + captura (`registerCaptureNotification` con antifraude desactivado) |
+| `APPROVED` | Marca pedido pagado + captura |
 | `DECLINED`, `ERROR`, `VOIDED` | Cancela el pedido |
 
 ## Webhook vs callback
 
 | Mecanismo | Rol |
 |-----------|-----|
-| **Webhook** (`POST /wompi/payment/webhook`) | **Fuente de verdad** según [documentación Wompi](https://docs.wompi.co/docs/colombia/eventos/) |
-| **Callback** (`GET /wompi/payment/callback?id=`) | Retorno del navegador; respaldo UX |
+| **Webhook** | Fuente de verdad |
+| **Callback** | Retorno del navegador; respaldo UX |
 
-En producción el webhook suele procesar el pedido **antes** que el redirect del cliente. Ambos caminos son idempotentes: si el pedido ya está pagado, no se repite la captura.
+Ambos caminos son idempotentes.
 
 ## Captura y antifraude
 
-Pagos offsite en COP con montos altos pueden disparar el filtro antifraude nativo de Magento (`Suspected Fraud`), dejando `total_paid` en NULL.
-
-**Corrección v2.0:** `registerCaptureNotification($amount, true)` — el segundo parámetro omite la detección de fraude para pagos ya verificados por API Wompi.
-
-## Fulfillment
-
-Tras el pago, el equipo debe provisionar el servicio (p. ej. VPS cloud) y pasar el pedido a `complete` cuando corresponda.
+`registerCaptureNotification($amount, true)` evita falsos positivos de fraude en pagos offsite ya verificados por API Wompi.
