@@ -13,6 +13,11 @@ use Wompi\Payment\Model\Config;
 
 class ConfigTest extends TestCase
 {
+    /** Synthetic values only; not real Wompi credentials. */
+    private const FAKE_INTEGRITY_PRODUCTION = 'prod_integrity_fake_unit_test_secret_00001';
+    private const FAKE_PUBLIC_PRODUCTION = 'pub_prod_FAKE_UNIT_TEST_PUBLIC_KEY_00001';
+    private const FAKE_INTEGRITY_SANDBOX = 'test_integrity_fake_unit_test_secret_00001';
+
     private ScopeConfigInterface&MockObject $scopeConfig;
     private StoreManagerInterface&MockObject $storeManager;
     private EncryptorInterface&MockObject $encryptor;
@@ -28,8 +33,8 @@ class ConfigTest extends TestCase
 
     public function testGetIntegrityKeyDecryptsEncryptedProductionValue(): void
     {
-        $encrypted = '0:3:ciphertext';
-        $plain = 'prod_integrity_fEFHnMSRj4yYHL8brxdCl4zF8rzEeITC';
+        $encrypted = '0:3:fake_ciphertext_for_unit_test';
+        $plain = self::FAKE_INTEGRITY_PRODUCTION;
 
         $this->scopeConfig->method('getValue')->willReturnCallback(
             static function (string $path, string $scope = ScopeInterface::SCOPE_STORE, $storeId = null) use ($encrypted): ?string {
@@ -54,7 +59,7 @@ class ConfigTest extends TestCase
 
     public function testGetIntegrityKeyReturnsPlainTextWithoutDecrypt(): void
     {
-        $plain = 'test_integrity_plain';
+        $plain = self::FAKE_INTEGRITY_SANDBOX;
 
         $this->scopeConfig->method('getValue')->willReturnCallback(
             static function (string $path) use ($plain): ?string {
@@ -76,7 +81,7 @@ class ConfigTest extends TestCase
 
     public function testGetPublicKeyIsNotDecrypted(): void
     {
-        $publicKey = 'pub_prod_XsWJkGZDTSOWZC52BNYDL9CgJIt1P3Vy';
+        $publicKey = self::FAKE_PUBLIC_PRODUCTION;
 
         $this->scopeConfig->method('getValue')->willReturnCallback(
             static function (string $path) use ($publicKey): ?string {
